@@ -8,9 +8,11 @@ WORKDIR /app
 ENV FLASK_RUN_HOST=0.0.0.0
 
 COPY requirements.txt requirements.txt
-COPY P7.py app.py 
+#COPY P7.py app.py 
 RUN pip3 install -r requirements.txt
 #EXPOSE  7878
+
+COPY P7.py app.py 
 COPY . .
 
 #CMD [ "python3", "-m" , "flask", "run", "--host=51.158.147.66", "--port=7878"]
