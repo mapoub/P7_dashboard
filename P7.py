@@ -12,9 +12,15 @@ from urllib.request import urlopen
 from streamlit.report_thread import get_report_ctx
 import requests
 
-# URL API
-URL = "http://51.158.147.66"
-API = "http://51.158.147.66:4567"
+
+import configparser
+
+# lecture des paramtres
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+URL       = config['config']['URL']
+API       = config['config']['API']
 
 
 st.markdown(
@@ -79,8 +85,7 @@ list_id = response.read().decode('utf-8')
 list_id = list_id.split(',')
 numclient = sb.selectbox('Select a client ? (103625: non solvable/105091: solvable)', (list_id)) 
 
-
-sb.image(URL+'/P7/feature_importance.png')
+sb.image(URL+"/P7/feature_importance.png")
 
 def newindictor(p_key):
     
